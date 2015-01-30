@@ -19,17 +19,17 @@
 
 shares = data_bag_item(node['samba']['shares_data_bag'], 'shares')
 
-shares['shares'].each do |k, v|
-  if v.key?('path') # ~FC023
-    directory v['path'] do
-      recursive true
-    end
-  end
-end
+#shares['shares'].each do |k, v|
+#  if v.key?('path') # ~FC023
+#    directory v['path'] do
+#      recursive true
+#    end
+#  end
+#end
 
-users = if node["samba"]["passdb_backend"] !=~ /^ldapsam/ && node['samba']['enable_users_search']
-  search(node['samba']['users_data_bag'], '*:*') # ~FC003
-end
+#users = if node["samba"]["passdb_backend"] !=~ /^ldapsam/ && node['samba']['enable_users_search']
+#  search(node['samba']['users_data_bag'], '*:*') # ~FC003
+#end
 
 package node['samba']['server_package']
 svcs = node['samba']['services']
