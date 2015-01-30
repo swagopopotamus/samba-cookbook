@@ -45,15 +45,15 @@ template node['samba']['config'] do
   end
 end
 
-if users
-  users.each do |u|
-    next unless u['smbpasswd']
-    samba_user u['id'] do
-      password u['smbpasswd']
-      action [:create, :enable]
-    end
-  end
-end
+#if users
+#  users.each do |u|
+#    next unless u['smbpasswd']
+#    samba_user u['id'] do
+#      password u['smbpasswd']
+#      action [:create, :enable]
+#    end
+#  end
+#end
 
 svcs.each do |s|
   service s do
